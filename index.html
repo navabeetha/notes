@@ -20,27 +20,326 @@
 </head>
 <body>
 
-<div id="visdown-input">  
-  
-# Bar Plot
-  
+<h1>Veggie Delite</h1>
+    
+<h2>Plotting Number of Notes vs Value of Money</h2>
+    
+<p>The first table works with three axis:</p>
+<ol> 
+    <li>X Axis:       Plots the year.</li>
+    <li>Y Axis Left:  Plots the number of notes in 'millions'.</li>
+    <li>Y Axis Right: Plots the amount of money (value of notes X number of notes) in 'billions'.</li>
+</ol>
+
+<p>The chart comprises of three layers:</p>
+<ol>
+    <li>Bar Chart:    Plotting the amount of money.</li>
+    <li>Line Chart:   Plotting the number of notes.</li>
+    <li>Scatter Plot: Again, plotting the number of notes; this is a repeat of the above line chart.
+                      As the colour of the line chart merges with the colour of the bar chart,
+                      I decided to add a layer of points in order to increase visibility.</li>
+</ol>
+    
+<div id="visdown-input">
+    
 ```vis
-data: 
-  url: data/cars.csv
-mark: point
+width: 900
+height: 600
+data:
+  url: data/notes.csv
+layer:
+- mark: bar
+  encoding:
+    x:
+     field: year
+     type: N
+     scale:
+      paddingInner: 0.7
+      paddingOuter: 0.5
+    y:
+     field: number
+     type: Q
+     axis:
+      grid: false
+      orient: left
+    color:
+     field: denom
+     type: N
+- mark: line
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     scale:
+      type: sqrt
+     field: money
+     type: Q
+     axis:
+      grid: false
+      orient: right
+    color:
+     field: denom
+     type: N
+- mark: circle
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     scale:
+      type: sqrt
+     field: money
+     type: Q
+     axis:
+      grid: false
+      orient: right
+resolve:
+  scale:
+   y: independent
+```
+
+Filtering out one Note
+    
+Trying to figure out the contribution of one denomination to the amount of money in the system over time.
+
+    1. I first attempted to separate the dataset into two bins (assuming i understand what it does),
+       and tried to use the same bins to separate out the datasets of this bin and that bin.
+    2. I then attempted to separate out datum.denom == 1 into a bin, following which i attempted to plot
+       bin vs !bin.
+    3. Then Hardik mentioned that one could just have total quantity with color spli by datum.denom = 1
+
+    
+```vis
+width: 900
+height: 400
+data:
+  url: data/notes.csv
+layer:
+- mark: bar
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     aggregate: sum
+     field: money
+     type: Q
+```
+
+```vis
+width: 900
+height: 400
+data:
+  url: data/notes.csv
+mark: bar
+transform:
+- filter: (datum.denom == 1) || (datum.denom == 10)
 encoding:
-  x: 
-    field: kmpl
-    type: Q
-  y:   
-    field: price
-    type: Q
+  x:
+   field: year
+   type: N
+  y:
+   field: number
+   type: Q
+   stack: null
   color:
-    field: type
-    type: N
-  size:
-    field: bhp
-    type: Q
+   field: value
+   stack: null
+  opacity:
+   value: 0.5
+
+```
+    
+```vis
+width: 900
+height: 400
+data:
+  url: data/notes.csv
+mark: line
+encoding:
+  x:
+   field: year
+   type: N
+  y:
+   field: number
+   type: Q
+   stack: null
+  color:
+   field: value
+   stack: null
+  opacity:
+   value: 0.5
+```
+    
+```vis
+width: 900
+height: 100
+data:
+  url: data/notes.csv
+mark: area
+encoding:
+  x:
+   field: year
+   type: N
+  row:
+   field: denom
+   type: N
+  y:
+   field: number
+   type: Q
+   stack: null
+  color:
+   field: denom
+   type: N
+```
+    
+```vis
+width: 900
+height: 400
+data:
+  url: data/notes.csv
+mark: line
+encoding:
+  x:
+   field: year
+   type: N
+  y:
+   field: money
+   type: Q
+   scale:
+    type: sqrt
+   stack: null
+  color:
+   field: value
+   stack: null
+  opacity:
+   value: 0.5
+```
+    
+```vis
+width: 900
+height: 100
+data:
+  url: data/notes.csv
+mark: area
+encoding:
+  x:
+   field: year
+   type: N
+  row:
+   field: denom
+   type: N
+  y:
+   field: money
+   type: Q
+   scale:
+    type: sqrt
+   stack: null
+  color:
+   field: denom
+   type: N
+```
+    
+```vis
+width: 900
+height: 300
+layer:
+- data:
+    url: data/notes.csv
+  transform:
+  - filter: datum.denom == "0500"
+  mark: bar
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     field: money
+     type: Q
+    color:
+     field: denom
+     type: N
+    opacity:
+     value: 0.3
+- data:
+    url: data/notes.csv
+  transform:
+  - filter: datum.denom == "1000"
+  mark: bar
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     field: money
+     type: Q
+    color:
+     field: denom
+     type: N
+    opacity:
+     value: 0.3
+- data:
+    url: data/notes.csv
+  transform:
+  - filter: datum.denom == "0100"
+  mark: bar
+  encoding:
+    x:
+     field: year
+     type: N
+    y:
+     field: money
+     type: Q
+    color:
+     field: denom
+     type: N
+    opacity:
+     value: 0.3
+```
+    
+```vis
+width: 900
+height: 300
+data:
+  url: data/notes.csv
+transform:
+- filter: (datum.denom == "0100") || (datum.denom == "0500")
+mark: area
+encoding:
+  x:
+   field: year
+   type: N
+  y:
+   field: money
+   type: Q
+   axis:
+    orient: right
+  color:
+   field: denom
+   type: N
+```
+
+```vis
+width: 900
+height: 300
+data:
+  url: data/notes.csv
+transform:
+- filter: (datum.denom == "0100") || (datum.denom == "0500")
+mark: area
+encoding:
+  x:
+   field: year
+   type: N
+  y:
+   field: number
+   type: Q
+   axis:
+    orient: right
+  color:
+   field: denom
+   type: N
 ```
     
 </div>
