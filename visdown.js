@@ -10,14 +10,14 @@ marked.setOptions({
 
 // add config options here
 //const config {
-//
+//  vega.scheme(set2)
 //}
 
 const opts = {
   "mode": "vega-lite",
   "renderer": "svg",
   "actions": {export: false, source: false, editor: false}
-  //"config" : confing
+//  "config" : config
 };
 
 
