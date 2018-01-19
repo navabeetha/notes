@@ -8,10 +8,16 @@ marked.setOptions({
   tables: true,
 });
 
+// add config options here
+//const config {
+//
+//}
+
 const opts = {
   "mode": "vega-lite",
   "renderer": "svg",
-  "actions": {export: true, source: false, editor: false}
+  "actions": {export: false, source: false, editor: false}
+  //"config" : confing
 };
 
 
@@ -37,7 +43,7 @@ let output = document.querySelector("#visdown-output");
 
 function visdown(input, element) {
   console.log('visdown');
-  let visdownText = input.textContent;
+  let visdownText = input.innerHTML;
   element.innerHTML = marked(visdownText);
   _render(element);
 }

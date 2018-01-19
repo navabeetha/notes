@@ -125,504 +125,521 @@ resolve:
    y: independent
 ```
     
-<h2>### Step 2: Highlighting a Denomination</h2>
+### Step 2: Highlighting a Denomination
     
-<p>In the above graph, it is difficult to identify the contributions of individual denominations to:</p>
+In the above graph, it is difficult to identify the contributions of individual denominations to:
 
    1. The total number of notes in circulation
    2. The amount of money in circulation (money = number x value)
    
-<p>Below are charts comparing 1. on the left and 2. on the right.</p> 
+Below are charts comparing 1. on the left and 2. on the right.
 
-<br/>    
-<h2>### Rs 1</h2>
+### Rs 1
+    
 ```vis
 data:
   url: data/notes.csv
-transform:
-- calculate: 'datum.value == 1 ? "Rs 1" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
+vconcat:
+- transform:
+  - calculate: 'datum.value == 1 ? "Rs 1" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 2 ? "Rs 2" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 5 ? "Rs 5" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+```
+  
+```vis
+data:
+  url: data/notes.csv
+vconcat:
+- transform:
+  - calculate: 'datum.value == 10 ? "Rs 50" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 20 ? "Rs 20" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 50 ? "Rs 50" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+```
+    
+```vis
+data:
+  url: data/notes.csv
+vconcat:
+- transform:
+  - calculate: 'datum.value == 100 ? "Rs 100" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 500 ? "Rs 500" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+- transform:
+  - calculate: 'datum.value == 1000 ? "Rs 1000" : "Rest Combined"'
+    as: "Partial Contribution"
+  hconcat:
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: money
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Sum of Money in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
+  - mark: area
+    width: 350
+    encoding:
+      x:
+       field: year
+       type: temporal
+       axis:
+        title: "Year"
+        tickCount: 10
+        labelAngle: -45
+      y:
+       aggregate: sum
+       field: number
+       type: Q
+       axis:
+        grid: false
+        orient: right
+        title: "Number of Notes in Billions"
+      color:
+       field: "Partial Contribution"
+       type: N
+       scale:
+         range:
+         - "#ff99cc"
+         - "#66ccff"
 ```
 
-<br/>    
-<h2>### Rs 2</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 2 ? "Rs 2" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```
-    
-<br/>    
-<h2>### Rs 5</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 5 ? "Rs 5" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```
-    
-<br/>    
-<h2>### Rs 10</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 10 ? "Rs 10" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```    
-
-<br/>    
-<h2>### Rs 50</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 50 ? "Rs 50" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```
-    
-<br/>    
-<h2>### Rs 100</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 100 ? "Rs 100" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```    
-    
-<br/>    
-<h2>### Rs 500</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 500 ? "Rs 500" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```
-    
-<br/>    
-<h2>### Rs 1000</h2>    
-```vis
-data:
-  url: data/notes.csv
-transform:
-- calculate: 'datum.value == 1000 ? "Rs 1000" : "Rest Combined"'
-  as: "Partial Contribution"
-hconcat:
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: money
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Sum of Money in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-- mark: area
-  width: 350
-  encoding:
-    x:
-     field: year
-     type: temporal
-     axis:
-      title: "Year"
-      tickCount: 10
-      labelAngle: -45
-    y:
-     aggregate: sum
-     field: number
-     type: Q
-     axis:
-      grid: false
-      orient: right
-      title: "Number of Notes in Billions"
-    color:
-     field: "Partial Contribution"
-     type: N
-     scale:
-       range:
-       - "#ff99cc"
-       - "#66ccff"
-```    
-    
-    
     
 <h2>### Step 3: Some Analysis</h2>
     
@@ -635,8 +652,8 @@ hconcat:
       Starting in 1996 and again around 2005, the number of notes of Rs. 10 have seen a steady rise. In fact as of 2015, it constitutes approximately 30%+ of all the notes in circulation and has more or less had the same share since at least 1977.
       Despite the higher value of these notes, they have had no impact on thee overall money; to understand this phenomenon, we might have to look at the Highest Denominations - Rs. 500 and Rs. 1000.
     
-   3. Higher Denominations - Rs. 50, 100 -
-      These two denominations are unremarkable in their contributions to both the number of notes as well as the amount of money in circulation.
+   3. Higher Denominations - Rs. 20, 50, 100 -
+      These three denominations are unremarkable in their contributions to both the number of notes as well as the amount of money in circulation.
     
    4. Highest Denominations - Rs. 500, 1000 -
       Rs. 500 was introduced in 1987 and Rs. 1000 in 2000. In terms of number if notes, neither have increased or decreased abnormally. However due to the significantly higher value of these notes, they have come to represent about 50% and 30% of the amount of money in circulation.
